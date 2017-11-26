@@ -1,7 +1,7 @@
 # This is the Makefile for Hello GLUT. It builds the Hello GLUT executable.
 
 # Directories containing C headers. Edit to match path containing freeglut headers.
-INCLUDE_DIRS = -I.\include -I"C:\Program Files\Common Files\freeglut\include"
+INCLUDE_DIRS = -I"C:\Program Files\Common Files\freeglut\include"
 
 # Directories containing import libraries. Edit to match path containing freeglut libs.
 LIB_DIRS = -L"C:\Program Files\Common Files\freeglut\lib"
@@ -37,9 +37,9 @@ bin:
 bin/HelloGLUT.exe: ${OBJS} | bin
 	${CC} -o "$@" ${OBJS} ${LDFLAGS}
 
-obj/%.o: src/%.c | obj
+obj/%.o: HelloGLUT/%.c | obj
 	${CC} ${CFLAGS} -c $< -o $@
 
 # Dependencies
-obj/HelloGLUT.o:  include/Callbacks.h
-obj/Callbacks.o:  include/Callbacks.h
+obj/HelloGLUT.o: HelloGLUT/Callbacks.h
+obj/Callbacks.o: HelloGLUT/Callbacks.h
